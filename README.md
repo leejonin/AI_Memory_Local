@@ -1,88 +1,105 @@
-# AI_Memory_Local
-🧠 AI_Memory_Local: GPT-Powered Local Conversation Memory Storage
-This project is a robust system designed to bridge Unity-based AI agents with a persistent memory layer. It saves conversation history into local JSON files via a Python Flask server and leverages the OpenAI GPT API for automated summarization and semantic-based memory retrieval.
+제공해주신 유니티 C# 스크립트와 파이썬 Flask 서버 코드를 바탕으로 작성한 깃허브 `README.md` 템플릿입니다. 영어와 한글 버전을 나누어 정리해 드립니다.
 
-🚀 Key Features
-Real-time Data Storage: Automatically synchronizes conversation data from Unity into a structured Date/Time hierarchy.
+---
 
-GPT Auto-Summarization: Utilizes gpt-3.5-turbo or gpt-4o-mini to generate concise, one-line summaries for every saved dialogue segment.
+# 📂 Unity-Python-Chat-Memory-System
 
-Semantic Search (/search): Goes beyond basic keyword matching. The system understands the context of past conversations to extract relevant memories and provide synthesized insights.
+A bridge system between **Unity** and **Python (Flask)** that provides long-term memory capabilities for AI NPCs. It stores conversation logs in structured JSON format and utilizes GPT-3.5 to summarize and search through past memories based on semantic relevance.
 
-Auto-Recovery: On server startup, the system automatically scans historical data to identify and fill in any missing summaries.
+유니티와 파이썬(Flask)을 연결하여 AI NPC에게 장기 기억 능력을 부여하는 브릿지 시스템입니다. 대화 로그를 구조화된 JSON으로 저장하며, GPT-3.5를 사용하여 과거의 기억을 요약하고 의미 기반으로 검색할 수 있습니다.
 
-🛠 Tech Stack
-Backend: Python 3.x, Flask
+---
 
-AI: OpenAI API (GPT-3.5 / GPT-4)
+## 🚀 Features
+*   **Automated Server Management**: Unity automatically starts and stops the Python Flask server within the editor.[cite: 1]
+*   **Conversation Logging**: Saves user inputs and AI responses to a nested JSON structure (Year/Month/Day/Hour/Minute).[cite: 2]
+*   **GPT Summarization**: Automatically generates a one-sentence summary for each dialogue entry using OpenAI's API.[cite: 2]
+*   **Semantic Memory Search**: Instead of simple keyword matching, it uses GPT to understand the context and retrieve relevant past memories.[cite: 2]
+*   **Async/Await Support**: Provides modern C# `Task`-based API for seamless integration in Unity.[cite: 1]
 
-Frontend Interface: Unity C# (ServerCommunication.cs)
+---
 
-Database: Local JSON File (YYDate.Json)
+## 🛠️ Tech Stack
+*   **Client**: Unity (C#)
+*   **Server**: Python (Flask)
+*   **AI**: OpenAI API (GPT-3.5-turbo)
+*   **Database**: JSON-based file storage[cite: 2]
 
-⚙️ Installation & Setup
-Install Dependencies:
+---
 
-Bash
-pip install flask openai
+## ⚙️ Setup
 
-
-2.  **API Key Configuration**:
-    Enter your OpenAI API key in the `OPENAI_API_KEY` variable at the top of `Sever.py`.
-
-3.  **Run Server**:
-    ```bash
-    python Sever.py
-    ```
-
-## 📋 API Endpoints
-
-| Method | Path | Description |
-| :--- | :--- | :--- |
-| **POST** | `/data` | Saves new conversation data and generates an automated summary. |
-| **POST** | `/search` | Performs a semantic search of memories based on context/keywords. |
-| **POST** | `/summation` | Regenerates a summary for a specific conversation timestamp. |
-| **GET** | `/health` | Checks the server connectivity and status. |
-
-
-# 🧠 AI_Memory_Local: GPT 기반 로컬 대화 기억 저장소
-
-Unity와 Python Flask를 연동하여 AI와의 대화 내역을 로컬에 저장하고, GPT를 이용해 똑똑하게 관리하는 프로젝트입니다. 단순한 로그 저장을 넘어 **자동 요약**과 **의미 기반 검색**을 통해 AI에게 '장기 기억'을 부여합니다.
-
-## 🚀 주요 기능 (Key Features)
-
-*   **💾 실시간 데이터 저장**: Unity에서 발생한 대화를 날짜/시간별 계층 구조로 JSON에 자동 기록합니다.
-*   **📝 GPT 자동 요약**: 대화 저장 시 `gpt-3.5-turbo` 또는 `gpt-4o-mini`가 핵심 내용을 한 줄로 요약합니다.
-*   **🔍 의미 기반 검색 (/search)**: 단순 단어 찾기가 아닌 문맥을 파악하는 검색으로 관련 기억을 추출합니다.
-*   **🛠 자동 복구 시스템**: 서버 실행 시 요약이 누락된 과거 데이터를 전수 조사하여 자동으로 채워넣습니다.
-
-## 🛠 기술 스택 (Tech Stack)
-
-*   **Backend**: `Python 3.x`, `Flask`
-*   **AI Engine**: `OpenAI API (GPT-3.5 / GPT-4)`
-*   **Frontend**: `Unity C# (ServerCommunication.cs)`
-*   **Database**: `Local JSON File (YYDate.Json)`
-
-## ⚙️ 설치 및 설정 (Installation)
-
-1️⃣ **의존성 설치**
+### 1. Python Environment
+Install the required dependencies:
 ```bash
 pip install flask openai
 ```
 
-2️⃣ **API 키 설정**
-`Sever.py` 파일 상단의 `OPENAI_API_KEY` 변수에 본인의 OpenAI API 키를 입력하세요.
-
-3️⃣ **서버 실행**
-```bash
-python Sever.py
+### 2. OpenAI API Key
+In `Sever.py`, replace the placeholder with your actual API key:[cite: 2]
+```python
+client = openai.OpenAI(api_key="YOUR_OPENAI_API_KEY")
 ```
 
-## 📋 API 엔드포인트 (API Endpoints)
+### 3. Unity Integration
+1. Place `ServerCommunication.cs` in your Unity project.[cite: 1]
+2. Ensure the `Sever.py` file is located at: `Assets/AI/ForChat/DateServer/Sever.py`.[cite: 1]
+3. Attach the `ServerCommunication` script to a GameObject in your scene.
 
-| 메서드 | 경로 | 설명 |
-| :--- | :--- | :--- |
-| **POST** | `/data` | 새로운 대화 데이터 저장 및 자동 요약 생성 |
-| **POST** | `/search` | 키워드/문맥을 통한 의미 기반 대화 기억 검색 |
-| **POST** | `/summation` | 특정 시간대 대화 데이터의 요약본 재생성 |
-| **GET** | `/health` | 서버 연결 상태 및 상태 체크 |
+---
+
+## 📖 How to Use (Code Examples)
+
+### Saving Data (데이터 저장)
+```csharp
+// Saves current conversation to the JSON database
+serverCommunication.SendCustomData("Hi, my name is Gemini.", "Hello! Nice to meet you.");
+```
+
+### Searching Memory (기억 검색)
+You can use `async/await` to retrieve past information:[cite: 1]
+```csharp
+public async void SearchTest()
+{
+    var result = await serverCommunication.SearchMemory("What was my name?");
+    if (result.found)
+    {
+        Debug.Log("GPT Answer: " + result.gptAnswer);
+        // Output: "The user's name is Gemini."
+    }
+}
+```
+
+---
+
+## 📝 상세 설명 (Korean)
+
+### **서버 통신 방식**
+이 시스템은 유니티의 `UnityWebRequest`를 사용하여 로컬 Flask 서버와 통신합니다. 유니티가 시작될 때 파이썬 프로세스를 백그라운드에서 자동으로 실행하며, 종료 시 프로세스를 함께 종료하도록 설계되었습니다.[cite: 1]
+
+### **데이터 구조**
+대화 내역은 `YYDate.Json` 파일에 계층적으로 저장됩니다.[cite: 2]
+*   **연도 > 월 > 일 > 시 > 분** 순서로 데이터가 분류되어 체계적인 관리가 가능합니다.
+*   각 엔트리는 원본 대화와 함께 GPT가 생성한 `summation`(요약)을 포함합니다.[cite: 2]
+
+### **검색 메커니즘**
+단순히 텍스트가 일치하는지 찾는 것이 아니라, GPT를 활용한 2단계 검색을 수행합니다:[cite: 2]
+1.  **필터링**: 요약본 목록 중 키워드와 관련 있는 인덱스를 GPT가 선별합니다.
+2.  **최종 답변**: 선별된 과거 대화 내용들을 종합하여 사용자의 질문에 대한 핵심 정보를 정리해 반환합니다.
+
+---
+
+## ⚠️ Requirements
+*   Unity 2020.3 or higher
+*   Python 3.x
+*   Valid OpenAI API Key
+
+---
+
+## 🤝 Contribution
+Contributions, issues, and feature requests are welcome!
+
+---
+
+**Note:** This project was developed as a bridge for AI-driven interactive characters.
+**주의:** 이 프로젝트는 AI 기반 상호작용 캐릭터의 기억 시스템을 구현하기 위한 용도로 제작되었습니다.
