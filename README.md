@@ -72,4 +72,4 @@ Sever.py 상단의 OPENAI_API_KEY 부분에 본인의 OpenAI API 키를 입력�
 Bash
 python Sever.py
 
-📋 API 엔드포인트메서드경로설명POST/data새로운 대화 데이터 저장 및 요약 생성POST/search키워드를 통한 의미 기반 대화 기억 검색POST/summation특정 시간대 대화 요약 재생성GET/health
+📋 API 엔드포인트 (API Endpoints)메서드경로설명POST/data새로운 대화 데이터를 저장하고 GPT를 통해 자동 요약을 생성합니다.POST/search키워드나 문맥을 바탕으로 과거 대화 기억에 대한 의미 기반 검색을 수행합니다.POST/summation특정 시간대의 대화 기록에 대해 요약본을 다시 생성합니다.GET/health서버의 연결 상태 및 정상 작동 여부를 확인합니다.
