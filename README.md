@@ -1,6 +1,4 @@
-제공해주신 유니티 C# 스크립트와 파이썬 Flask 서버 코드를 바탕으로 작성한 깃허브 `README.md` 템플릿입니다. 영어와 한글 버전을 나누어 정리해 드립니다.
 
----
 
 # 📂 Unity-Python-Chat-Memory-System
 
